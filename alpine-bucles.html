@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+
+<body>
+
+    <div x-data="data()">
+        <ul>
+            <!-- <template x-for="product in products"> -->
+            <template x-for="product in Object.values(products)">
+                <li>
+                    <span x-text="product.stock"></span>-
+                    <span x-text="product.name"></span>
+
+                    <template x-if="product.stock == 0">
+                        (Sin stock)
+                    </template>
+                </li>
+            </template> 
+        </ul>
+    </div>
+
+</body>
+
+<script>
+    function data() {
+        return {
+            /* products: [
+                {
+                    id: 1,
+                    name: 'pantalon',
+                    stock: 5
+                },
+                {
+                    id: 2,
+                    name: 'casaca',
+                    stock: 12
+                },
+                {
+                    id: 1,
+                    name: 'zapatilla',
+                    stock: 8
+                },
+                {
+                    id: 1,
+                    name: 'camisa',
+                    stock: 0
+                },
+            ] */
+            products: {
+                1: {
+                    id: 1,
+                    name: 'pantalon',
+                    stock: 5
+                },
+                2: {
+                    id: 2,
+                    name: 'casaca',
+                    stock: 12
+                },
+                3: {
+                    id: 1,
+                    name: 'zapatilla',
+                    stock: 8
+                },
+                4: {
+                    id: 1,
+                    name: 'camisa',
+                    stock: 0
+                },
+            }  
+        }
+    }
+</script>
+
+</html>

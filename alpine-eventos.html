@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+<body>
+    
+    <div x-data="{ mensaje: null}">
+
+        <!-- Se mostrará en consola el Hola mundo, esta consola está en la web -->
+        <!-- <button @click="console.log('Hola mundo')">
+            Hazme click
+        </button> -->
+
+
+        <!-- @submit ejecuta una dirección url y el código que se le ha pasado
+        @submit.prevent evita que ejecute la url pero ejecuta el código que se le ha pasado -->
+        <!-- <form action="" @submit.prevent="console.log(mensaje)">
+
+            <input type="text" x-model="mensaje">
+
+            <button @click.away="console.log('has hecho click fuera del botón')">
+                Enviar
+            </button>
+        </form> -->
+
+        <!-- El evento keydown se desencadena cada vez que escribimos en este input -->
+        <!-- <input type="text" x-model="mensaje" @keydown="console.log(mensaje)"> -->
+
+        <!-- Tecla enter -->
+        <!-- <input type="text" x-model="mensaje" @keydown.enter="console.log(mensaje)"> -->
+
+        <!-- Tecla Esc -->
+        <!-- <input type="text" x-model="mensaje" @keydown.escape="console.log(mensaje)"> -->
+
+        <!-- Tecla hacia abajo usa sintaxis kebackcase -->
+        <!-- <input type="text" x-model="mensaje" @keydown.arrow-down="console.log(mensaje)"> -->
+
+        <!-- Tecla hacia abajo usa sintaxis kebackcase -->
+        <!-- <input type="text" x-model="mensaje" @keydown.arrow-up="console.log(mensaje)"> -->
+
+        <!-- Se desencadena cuando enviamos 2 modificadores o una combinación de teclas ctrl + a -->
+        <!-- <input type="text" x-model="mensaje" @keydown.ctrl.a="console.log(mensaje)"> -->
+
+    </div>
+
+    <!-- Accedemos a la propiedad de la pantalla para verificar si el ancho de la pantalla es superior  a 768px -->
+    <div x-data="{ open: true}" x-on:resize.window="open = window.outerWidth > 768 ? true : false">
+        <p x-show="open">
+            Este mensaje solo se mostrará en una pantalla
+        </p>
+    </div>
+
+</body>
+</html>

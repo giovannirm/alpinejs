@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+<body>
+    <div x-data="{mensaje: null}">
+        <input type="text" x-ref="input" x-model="mensaje">
+        
+        <!-- Muestra el valor de la variable en tiempo real -->
+        <!-- <p x-text="mensaje"></p> -->
+
+        <button @click="$refs.msj.innerText=mensaje; $refs.input.value=null;">Enviar</button>
+
+        <!-- Para identificar a una etiqueta o elemento de este componente se usa la directiva x-ref="nombre_identificativo" -->
+        <p x-ref="msj"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
+</head>
+<body>
+    
+    <div x-data>
+
+        <!-- El método mágico $el hace referencia a este botón -->
+        <!-- <button x-on:click="$el.innerHTML='Texto cambiado'">
+            Hazme click
+        </button> -->
+
+        <!-- <button x-on:click="$refs.nombre.innerHTML='Texto cambiado'">
+            Hazme click
+        </button>
+
+        <p x-ref="nombre">
+            Un texto
+        </p> -->
+
+        <!-- El evento input se activa cada vez que hagamos algún cambio en este input
+        El método mágico $event captura el evento
+        Para acceder al valor del input por el cual ha cambiado se debe agregar target.value -->
+        <!-- <input type="text" @input="console.log($event.target.value)"> -->
+
+    </div>
+
+    <div x-data="{ mensaje: null }">
+
+        <!-- El evento input se activa cada vez que hagamos algún cambio en este input
+        El método mágico $dispatch('custom-event', { foo: 'bar' }) dispara un evento al navegador
+        Dentro de los paréntesis se le pone un nombre al evento que se está disparando, 
+        seguido de algún valor que se quiera mandar, este segundo parámetro no es obligatorio -->
+        <input type="text" x-model="mensaje" x-on:input="$dispatch('custom-event', mensaje)">
+
+    </div>
+
+
+    <!-- Para escuchar el otro evento desde este componente, se usa el nombre del evento acompañado
+    de x-on:custom-event o de @custom-event
+
+    Al final se le agrega window porque hemos enviado un evento al navegador, y esa es la forma
+    de especificar que se está recibiendo un evento del navegador -->
+
+    <!-- mensaje <- hace referencia a la variable de este evento
+    mientras que para llamar a la variable del otro evento se pone $event para capturar
+    el evento recibido -->
+    <div x-data="{ mensaje: null }" @custom-event.window="mensaje = $event.detail">
+
+        
+        <input type="text" x-model="mensaje">
+
+    </div>
+</body>
+</html>
